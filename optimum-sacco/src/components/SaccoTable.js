@@ -21,7 +21,7 @@ function SaccoTable() {
             </thead>
             <tbody>
                 {saccos.map(sacco => (
-                    <tr key={sacco._id}>
+                    <tr key={sacco._id} >
                         <td>{sacco.name}</td>
                         <td>{sacco.phoneNumber}</td>
                         <td>{sacco.pin}</td>
