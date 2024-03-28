@@ -12,9 +12,9 @@ function App() {
     <UserData />
   
    </main>
-
     </>
-  );
-}
+    );
+      
+  }
 
 export default App;
