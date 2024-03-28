@@ -11,11 +11,11 @@ function SaccoTable() {
     }, []);
 
     return (
-        <table>
+        <table className='w-3/4 mx-auto'>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Phone Number</th>
+                    <th className='p-10'> Name</th>
+                    <th className='p-10'>Phone Number</th>
                     <th>Pin</th>
                 </tr>
             </thead>
