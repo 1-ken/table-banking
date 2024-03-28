@@ -16,8 +16,9 @@ mongoose.connect('mongodb+srv://Saitabau:%23Saitabau28@atlascluster.vczjtel.mong
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
 
-// Define the MongoDB schema and model for the SACCO collection
+// Assuming saccoSchema is a valid Mongoose schema
 const saccoSchema = new mongoose.Schema({
+    // schema definition
     id: String,
     name: String,
     idNumber: String,
@@ -25,19 +26,14 @@ const saccoSchema = new mongoose.Schema({
     pin: String
 });
 
-const SACCO = mongoose.model('SACCO', saccoSchema);
+// Create a model for the 'saccos' collection
+const Sacco = mongoose.model('Sacco', saccoSchema);
 
-// Define a route to fetch data from the SACCO collection and display it on the console
-app.get('/api/data', async (req, res) => {
-    try {
-        // Fetch all documents from the SACCO collection
-        const data = await SACCO.find({}, { _id: 0 }); // Exclude _id field from the result
-        console.log('Fetched data from SACCO collection:', data);
-        res.sendStatus(200); // Send HTTP status 200 OK as response
-    } catch (err) {
-        console.error('Error fetching data:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+// Create an endpoint to serve the data
+app.get('/api/saccos', (req, res) => {
+    Sacco.find()
+        .then(docs => res.json(docs))
+        .catch(err => res.status(500).json({ message: err.message }));
 });
 
 app.listen(PORT, () => {
